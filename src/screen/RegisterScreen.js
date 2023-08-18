@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function RegisterScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -18,11 +21,24 @@ function RegisterScreen() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
+
+    try {
+      // Send registration data to backend
+      const response = await axios.post("http://localhost:3000/api/register", {
+        name: name,
+        email: email,
+        password: password,
+      });
+
+      // Handle response from the backend (you can show a success message or redirect to login)
+      console.log(response.data);
+      navigate("/receipes");
+    } catch (error) {
+      // Handle registration error (show error message, etc.)
+      console.error("Registration error:", error);
+    }
   };
 
   return (

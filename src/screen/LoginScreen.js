@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -14,10 +17,18 @@ function LoginScreen() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+      const response = await axios.post("http://localhost:3000/api/login", {
+        email: email,
+        password: password,
+      });
+      console.log(response.data);
+      navigate("/receipes");
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   return (
