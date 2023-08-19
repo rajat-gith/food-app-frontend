@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { login } from "../actions/UserActions";
+import { useDispatch, useSelector } from "react-redux";
+import Alert from "@mui/material/Alert";
 
 function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
+
+  // console.log(userInfo);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -17,17 +24,16 @@ function LoginScreen() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/api/login", {
-        email: email,
-        password: password,
-      });
-      console.log(response.data);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+    console.log(userInfo);
+    if (userInfo.status === "ok") {
+      alert("Logged In Successfully");
       navigate("/receipes");
-    } catch (error) {
-      console.error("Login error:", error);
+    }
+    if (userInfo.status === "error") {
+      alert("Invalid Credentials");
     }
   };
 
@@ -35,6 +41,7 @@ function LoginScreen() {
     <div className="LoginScreen">
       <div className="container">
         <h2 className="heading">User Login</h2>
+
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <TextField

@@ -11,14 +11,16 @@ import ReceipePage from "./screen/ReceipePage";
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Routes>
-        <Route exact path="/" element={<HomeScreen />} />
-        <Route path="/receipes" element={<ReceipePage />} />
-        <Route path="/receipes/:id" element={<ReceipeDescription />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
-      </Routes>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route exact path="/" element={<HomeScreen />} />
+          <Route path="/receipes" element={<ReceipePage />} />
+          <Route path="/receipes/:id" element={<ReceipeDescription />} />
+          <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

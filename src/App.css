@@ -13,6 +13,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
 }
 
 .app-logo {
@@ -149,28 +150,121 @@
   cursor: pointer;
 }
 
-.receipe_card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin: 16px;
-  background-color: #fff;
-  text-align: center;
+.Receipe_Desc_Page {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10%;
+  right: 0;
+  left: 0;
 }
 
-.receipe_card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 12px;
+.ReceipeCard {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
 }
 
-.receipe_title {
+.receipe_desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageSliderDiv {
+  width: 50%;
+  height: 50%;
+}
+
+.receipe_content {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.receipe_content p {
+  margin: 10px 0;
   font-size: 18px;
+}
+
+.receipe_description {
+  font-style: italic;
+  color: #777;
+}
+
+.ingredients,
+.steps {
+  margin-top: 15px;
+}
+
+.ingredients label,
+.steps label {
+  font-size: 20px;
   font-weight: bold;
-  color: #333;
-  margin: 0;
+  cursor: pointer;
+}
+
+.ingredients p,
+.steps p {
+  margin: 8px 0;
+}
+
+.ingredients p:first-child,
+.steps p:first-child {
+  margin-top: 0;
+}
+
+.ingredients-content,
+.steps-content {
+  display: none;
+  margin-top: 10px;
+}
+
+.expanded .ingredients-content,
+.expanded .steps-content {
+  display: block;
+}
+
+.ingredients_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageDiv>img {
+  width: 100%;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.ingredients-button {
+  background-color: #FFD700;
+  color: #fff;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.steps-button {
+  background-color: #FF6347;
+  /* Tomato */
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #333;
+  /* Dark gray */
+  color: #fff;
 }
 
 
@@ -188,4 +282,15 @@
     width: 150px;
     object-fit: contain;
   }
+
+  .ReceipeCard {
+    width: 80%;
+    flex-direction: column;
+  }
+
+  .imageSliderDiv {
+    width: 300px;
+    height: 300px;
+  }
+
 }
