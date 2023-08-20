@@ -16,7 +16,11 @@ function Nav() {
           <Link to="/profile">
             <button className="profile">Profile</button>
           </Link>
-        ) : null
+        ) : (
+          <Link to="/login">
+            <button className="login">Login</button>
+          </Link>
+        )
       ) : (
         <Link to="/login">
           <button className="login">Login</button>
