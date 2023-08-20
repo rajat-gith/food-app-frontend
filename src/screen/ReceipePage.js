@@ -3,30 +3,33 @@ import axios from "axios";
 import { Card, Grid, Paper, Box } from "@mui/material";
 import { CardContent, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Receipe from "../components/Receipe";
+import CircularProgress from "@mui/material/CircularProgress";
+import { receipeList } from "../actions/ReceipeActions";
 
 function ReceipePage() {
-  const [receipes, setReceipes] = useState([]);
-
-  const fetchReceipe = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/api/receipes/");
-      setReceipes(response.data.receipe);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { error, loading, receipesList } = useSelector(
+    (state) => state.receipesList
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchReceipe();
-  }, []);
+    dispatch(receipeList());
+  }, [dispatch]);
+
+  console.log(receipesList);
 
   return (
     <div className="ReceipePage">
       <Grid container spacing={2}>
-        {receipes && Array.isArray(receipes)
-          ? receipes.map((key) => <Receipe receipe={key} />)
-          : null}
+        {receipesList ? (
+          receipesList.receipe && Array.isArray(receipesList.receipe) ? (
+            receipesList.receipe.map((key) => <Receipe receipe={key} />)
+          ) : null
+        ) : (
+          <CircularProgress className="circularProgress" />
+        )}
       </Grid>
     </div>
   );

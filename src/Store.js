@@ -6,11 +6,18 @@ import {
   registerUserReducer,
   userReceipeReducers,
 } from "./reducers/UserReducers";
+import {
+  receipeListByIdReducer,
+  receipeListReducer,
+} from "./reducers/ReceipeReducers";
+import { receipeListById } from "./actions/ReceipeActions";
 
 const reducer = combineReducers({
   userLogin: loginUserReducer,
   userRegister: registerUserReducer,
   userReceipe: userReceipeReducers,
+  receipesList: receipeListReducer,
+  receipe: receipeListByIdReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -20,6 +27,8 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
   userReceipe: {},
+  receipesList: {},
+  receipe: {},
 };
 
 const middleware = [thunk];

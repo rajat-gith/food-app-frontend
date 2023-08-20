@@ -150,7 +150,10 @@
 .ReceipePage {
   padding-top: 50px;
   cursor: pointer;
+  justify-content: center;
 }
+
+
 
 .Receipe_Desc_Page {
   position: absolute;
