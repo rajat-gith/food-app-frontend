@@ -7,6 +7,7 @@ import LoginScreen from "./screen/LoginScreen";
 import RegisterScreen from "./screen/RegisterScreen";
 import Nav from "./components/Nav";
 import ReceipePage from "./screen/ReceipePage";
+import ProfileScreen from "./screen/ProfileScreen";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/receipes/:id" element={<ReceipeDescription />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
+          <Route path="/profile" element={<ProfileScreen />} />
         </Routes>
       </Router>
     </div>

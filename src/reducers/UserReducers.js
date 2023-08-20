@@ -6,6 +6,12 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USER_RECEIPE_REQUEST,
+  USER_RECEIPE_SUCCESS,
+  USER_RECEIPE_FAIL,
+  USER_ADD_RECEIPE_REQUEST,
+  USER_ADD_RECEIPE_SUCCESS,
+  USER_ADD_RECEIPE_FAIL,
 } from "../constants/UserConstants";
 
 export const loginUserReducer = (state = {}, action) => {
@@ -32,14 +38,46 @@ export const registerUserReducer = (state = {}, action) => {
     case USER_REGISTER_REQUEST:
       return { loading: true };
 
-    case USER_REGISTER_FAIL:
+    case USER_REGISTER_SUCCESS:
       return { loading: false, userInfo: action.payload };
 
-    case USER_REGISTER_SUCCESS:
+    case USER_REGISTER_FAIL:
       return { loading: false, error: action.payload };
 
     case USER_LOGOUT:
       return {};
+
+    default:
+      return state;
+  }
+};
+
+export const userReceipeReducers = (state = {}, action) => {
+  switch (action.type) {
+    case USER_RECEIPE_REQUEST:
+      return { loading: true };
+
+    case USER_RECEIPE_SUCCESS:
+      return { loading: false, userReceipeInfo: action.payload };
+
+    case USER_RECEIPE_FAIL:
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+export const userAddReceipeReducers = (state = {}, action) => {
+  switch (action.type) {
+    case USER_ADD_RECEIPE_REQUEST:
+      return { loading: true };
+
+    case USER_ADD_RECEIPE_SUCCESS:
+      return { loading: false, userAddReceipeInfo: action.payload };
+
+    case USER_ADD_RECEIPE_FAIL:
+      return { loading: false, error: action.payload };
 
     default:
       return state;

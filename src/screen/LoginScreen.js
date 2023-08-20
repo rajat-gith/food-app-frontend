@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -27,16 +27,17 @@ function LoginScreen() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(login(email, password));
-    console.log(userInfo);
-    if (userInfo.status === "ok") {
-      alert("Logged In Successfully");
-      navigate("/receipes");
-    }
-    if (userInfo.status === "error") {
-      alert("Invalid Credentials");
-    }
   };
 
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.status === "ok") {
+        navigate("/profile");
+      } else {
+        alert("Invalid Credentials");
+      }
+    }
+  }, [userInfo]);
   return (
     <div className="LoginScreen">
       <div className="container">

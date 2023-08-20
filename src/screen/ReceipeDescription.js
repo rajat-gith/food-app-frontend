@@ -101,18 +101,6 @@ function ReceipeDescription() {
                   ))}
                 </Box>
               </Modal>
-              {/* <Expandable className="ingredients" label="Ingredients">
-                {data.ingredients[0].split(",").map((key) => (
-                  <div className="ingredients_list">
-                    <li>{key}</li>
-                  </div>
-                ))}
-              </Expandable>
-              <Expandable className="steps" label="Steps to Cook">
-                {data.steps[0].split(",").map((key) => (
-                  <li>{key}</li>
-                ))}
-              </Expandable> */}
             </div>
           ) : (
             <CircularProgress />

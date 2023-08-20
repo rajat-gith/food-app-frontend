@@ -1,7 +1,13 @@
 import {
+  USER_ADD_RECEIPE_FAIL,
+  USER_ADD_RECEIPE_REQUEST,
+  USER_ADD_RECEIPE_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  USER_RECEIPE_FAIL,
+  USER_RECEIPE_REQUEST,
+  USER_RECEIPE_SUCCESS,
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
@@ -28,8 +34,6 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
 
-    console.log(`${BASE_URL}/api/login`);
-
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
@@ -39,6 +43,78 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const userReceipe = (userId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USER_RECEIPE_REQUEST,
+    });
+
+    const { data } = await axios.get(
+      `${BASE_URL}/api/receipes/user/${userId}/recipes`
+    );
+
+    dispatch({
+      type: USER_RECEIPE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_RECEIPE_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const userAddReceipe = (post) => async (dispatch, getState) => {
+  try {
+    const REACT_APP_API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    dispatch({
+      type: USER_ADD_RECEIPE_REQUEST,
+    });
+    console.log(post);
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${userInfo.user.token}`,
+      },
+    };
+
+    console.log(config);
+
+    const { data } = await axios.post(
+      `${REACT_APP_API_BASE_URL}/api/receipes/add`,
+      post,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.user.token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: USER_ADD_RECEIPE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_ADD_RECEIPE_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail
