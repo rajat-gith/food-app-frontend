@@ -40,9 +40,8 @@ function LoginScreen() {
   }, [userInfo]);
   return (
     <div className="LoginScreen">
-      <div className="container">
+      <div className="Logincontainer">
         <h2 className="heading">User Login</h2>
-
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <TextField

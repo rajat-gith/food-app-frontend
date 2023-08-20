@@ -1,4 +1,4 @@
-.App {
+  .App {
 
   height: 100vh;
   background-size: cover;
@@ -99,7 +99,7 @@
 
 }
 
-.container {
+.Logincontainer {
   text-align: center;
   margin: auto;
   width: 80%;
