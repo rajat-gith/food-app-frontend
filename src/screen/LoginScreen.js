@@ -33,7 +33,8 @@ function LoginScreen() {
     if (userInfo) {
       if (userInfo.status === "ok") {
         navigate("/profile");
-      } else {
+      }
+      if (userInfo.status === "error") {
         alert("Invalid Credentials");
       }
     }
