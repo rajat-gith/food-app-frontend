@@ -21,6 +21,7 @@
     "react-simple-image-slider": "^2.4.1",
     "react-slick": "^0.29.0",
     "react-slideshow-image": "^4.2.1",
+    "react-spinners": "^0.13.8",
     "react-ui-cards": "^3.1.0",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",

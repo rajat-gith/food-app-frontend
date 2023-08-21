@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { login } from "../actions/UserActions";
 import { useDispatch, useSelector } from "react-redux";
-import Alert from "@mui/material/Alert";
+import { ClipLoader } from "react-spinners";
 
 function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -42,6 +42,9 @@ function LoginScreen() {
   return (
     <div className="LoginScreen">
       <div className="Logincontainer">
+        {loading === true ? (
+          <ClipLoader className="loader" color="blue" />
+        ) : null}
         <h2 className="heading">User Login</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">

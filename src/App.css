@@ -104,12 +104,18 @@
   .Registercontainer {
     text-align: center;
     margin: auto;
+    justify-content: center;
     width: 80%;
     max-width: 400px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .loader
+  {
+    text-align: center;
   }
 
   .heading {
