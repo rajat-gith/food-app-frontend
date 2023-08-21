@@ -1,430 +1,404 @@
   .App {
 
-  height: 100vh;
-  background-size: cover;
-}
-
-.Nav {
-  position: fixed;
-  right: 0;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10000;
-}
-
-.app-logo {
-  margin: 10px;
-}
-
-.login,
-.profile {
-  border: 0;
-  background-color: rgba(204, 187, 187, 0.543);
-  border-radius: 5px;
-  color: white;
-  margin-right: 10px;
-  padding: 10px;
-  cursor: pointer;
-  transition: ease 0.6s;
-}
-
-.login:hover,
-.profile:hover {
-  transform: scale(1.2);
-}
-
-/** Home Screen **/
-.HomeScreen {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../public/assets/app-bg.jpg");
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  background-size: cover;
-  height: 100vh;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-}
-
-.HomeScreenContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.tagline {
-  width: 80%;
-  text-align: center;
-  max-width: 800px;
-  color: white;
-  font-size: 30px;
-  width: 100%;
-  margin: 20px;
-}
-
-.highlightContent {
-  color: red;
-  text-transform: uppercase;
-  font-size: 40px;
-}
-
-.exploreButton {
-  background-color: red;
-  color: #FFFFFF;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-}
-
-.exploreButton:hover {
-  background-color: #E94B4B;
-}
-
-
-/**Login Screen**/
-.LoginScreen {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-
-}
-
-.Logincontainer {
-  text-align: center;
-  margin: auto;
-  width: 80%;
-  max-width: 400px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.heading {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.label {
-  margin-bottom: 5px;
-}
-
-.input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-
-}
-
-/**Receipe Page**/
-.ReceipePage {
-  padding-top: 50px;
-  cursor: pointer;
-  justify-content: center;
-}
-
-
-
-.Receipe_Desc_Page {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 10%;
-  right: 0;
-  left: 0;
-}
-
-.ReceipeCard {
-  display: flex;
-  width: 80%;
-  justify-content: center;
-  align-items: center;
-}
-
-.receipe_desc {
-  display: flex;
-  flex-direction: column;
-}
-
-.imageSliderDiv {
-  width: 50%;
-  height: 50%;
-}
-
-.receipe_content {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.receipe_content p {
-  margin: 10px 0;
-  font-size: 18px;
-}
-
-.receipe_description {
-  font-style: italic;
-  color: #777;
-}
-
-.ingredients,
-.steps {
-  margin-top: 15px;
-}
-
-.ingredients label,
-.steps label {
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.ingredients p,
-.steps p {
-  margin: 8px 0;
-}
-
-.ingredients p:first-child,
-.steps p:first-child {
-  margin-top: 0;
-}
-
-.ingredients-content,
-.steps-content {
-  display: none;
-  margin-top: 10px;
-}
-
-.expanded .ingredients-content,
-.expanded .steps-content {
-  display: block;
-}
-
-.ingredients_list {
-  display: flex;
-  flex-direction: column;
-}
-
-.imageDiv>img {
-  width: 100%;
-}
-
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.ingredients-button {
-  background-color: #FFD700;
-  color: #fff;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.steps-button {
-  background-color: #FF6347;
-  color: #fff;
-}
-
-.button:hover {
-  background-color: #333;
-  color: #fff;
-
-}
-
-/**Profile Page**/
-/* ProfileScreen.css */
-.profile_page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
-}
-
-.profile-container {
-  height: 70vh;
-  max-width: 600px;
-  padding: 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  overflow-y: auto;
-  /* Enable vertical scrolling when content overflows */
-}
-
-.user-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.user-info h2 {
-  margin: 0;
-  font-size: 28px;
-  color: #333;
-}
-
-.user-info p {
-  margin: 5px 0;
-  font-size: 18px;
-  color: #555;
-}
-
-.user-info button {
-  text-align: right;
-  background: green;
-  color: white;
-  border: 0;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.recipe-list {
-  margin-top: 20px;
-}
-
-.recipe-list h3 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.recipe-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.recipe-list li {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #444;
-  display: flex;
-  align-items: center;
-}
-
-
-.receipeCard {
-  display: flex;
-  margin-top: 10px;
-  align-items: center;
-  justify-content: center;
-  background: #ddd;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.receipeCard>img {
-  border-radius: 10px;
-  margin-right: 10px;
-}
-
-.recipeContent {
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  width: 80%;
-  margin-top: 20px;
-  padding: 20px;
-}
-
-.textfield {
-  margin-bottom: 15px;
-}
-
-.button {
-  margin-top: 15px;
-}
-
-
-/* Media query for responsive design */
-@media (max-width: 480px) {
-  .user-container {
-    width: 100%;
-    border: none;
-    box-shadow: none;
+    height: 100vh;
+    background-size: cover;
   }
 
-  .user-info h2 {
-    font-size: 24px;
-  }
-
-  .recipe-list h3 {
-    font-size: 20px;
-  }
-}
-
-
-
-/** Responsive**/
-@media only screen and (min-width: 320px) and (max-width: 768px) {
-  .tagline {
-    font-size: 18px;
-  }
-
-  .highlightContent {
-    font-size: 25px;
+  .Nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
   }
 
   .app-logo {
-    width: 150px;
-    object-fit: contain;
+    margin: 10px;
+  }
+
+  .login,
+  .profile {
+    border: 0;
+    background-color: rgba(204, 187, 187, 0.543);
+    border-radius: 5px;
+    color: white;
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: ease 0.6s;
+  }
+
+  .login:hover,
+  .profile:hover {
+    transform: scale(1.2);
+  }
+
+  /** Home Screen **/
+  .HomeScreen {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../public/assets/app-bg.jpg");
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .HomeScreenContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tagline {
+    width: 80%;
+    text-align: center;
+    max-width: 800px;
+    color: white;
+    font-size: 30px;
+    width: 100%;
+    margin: 20px;
+  }
+
+  .highlightContent {
+    color: red;
+    text-transform: uppercase;
+    font-size: 40px;
+  }
+
+  .exploreButton {
+    background-color: red;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .exploreButton:hover {
+    background-color: #E94B4B;
+  }
+
+
+  /**Login Screen**/
+  .LoginScreen,
+  .RegisterScreen {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+
+  }
+
+  .Logincontainer,
+  .Registercontainer {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .label {
+    margin-bottom: 5px;
+  }
+
+  .input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  .button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+
+  }
+
+  /**Receipe Page**/
+  .ReceipePage {
+    padding-top: 50px;
+    cursor: pointer;
+    justify-content: center;
+  }
+
+
+
+  .Receipe_Desc_Page {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    right: 0;
+    left: 0;
   }
 
   .ReceipeCard {
+    display: flex;
     width: 80%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .receipe_card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    background-color: #fff;
+  }
+
+  .receipe_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .receipe_card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .receipe_card p {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+
+  .receipe_desc {
+    display: flex;
     flex-direction: column;
   }
 
   .imageSliderDiv {
-    width: 300px;
-    height: 300px;
+    width: 50%;
+    height: 50%;
   }
 
-  .receipeCard {
+  .receipe_content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .receipe_content p {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+
+  .receipe_description {
+    font-style: italic;
+    color: #777;
+  }
+
+  .ingredients,
+  .steps {
+    margin-top: 15px;
+  }
+
+  .ingredients label,
+  .steps label {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .ingredients p,
+  .steps p {
+    margin: 8px 0;
+  }
+
+  .ingredients p:first-child,
+  .steps p:first-child {
+    margin-top: 0;
+  }
+
+  .ingredients-content,
+  .steps-content {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .expanded .ingredients-content,
+  .expanded .steps-content {
+    display: block;
+  }
+
+  .ingredients_list {
+    display: flex;
     flex-direction: column;
+  }
+
+  .imageDiv>img {
+    width: 100%;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .ingredients-button {
+    background-color: #FFD700;
+    color: #fff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .steps-button {
+    background-color: #FF6347;
+    color: #fff;
+  }
+
+  .button:hover {
+    background-color: #333;
+    color: #fff;
+
+  }
+
+  .searchForm {
+    display: flex;
+    margin-top: 20px;
+    justify-content: right;
+  }
+
+  .searchInput {
+    margin-right: 10px;
+  }
+
+  /**Profile Page**/
+  /* ProfileScreen.css */
+  .profile_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+  .profile-container {
+    height: 70vh;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow-y: auto;
+    /* Enable vertical scrolling when content overflows */
+  }
+
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .user-info h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+  }
+
+  .user-info p {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #555;
+  }
+
+  .user-info button {
+    text-align: right;
+    background: green;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .recipe-list {
+    margin-top: 20px;
+  }
+
+  .recipe-list h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .recipe-list ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .recipe-list li {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #444;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .receipeCard {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    background: #ddd;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .receipeCard>img {
+    border-radius: 10px;
+    margin-right: 10px;
   }
 
   .recipeContent {
@@ -432,17 +406,89 @@
     flex-direction: column;
   }
 
-  .user-info {
-    flex-direction: column;
+  .container {
+    width: 80%;
+    margin-top: 20px;
+    padding: 20px;
   }
 
-  .profile-container {
-    height: 80vh;
+  .textfield {
+    margin-bottom: 15px;
   }
 
-  .user-info button {
-    text-align: center;
-    padding: 10px;
+  .button {
+    margin-top: 15px;
   }
 
-}
+
+  /* Media query for responsive design */
+  @media (max-width: 480px) {
+    .user-container {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+    }
+
+    .user-info h2 {
+      font-size: 24px;
+    }
+
+    .recipe-list h3 {
+      font-size: 20px;
+    }
+  }
+
+
+
+  /** Responsive**/
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    .tagline {
+      font-size: 18px;
+    }
+
+    .highlightContent {
+      font-size: 25px;
+    }
+
+    .app-logo {
+      width: 150px;
+      object-fit: contain;
+    }
+
+    .ReceipeCard {
+      width: 80%;
+      flex-direction: column;
+    }
+
+    .imageSliderDiv {
+      width: 300px;
+      height: 300px;
+    }
+
+    .receipeCard {
+      flex-direction: column;
+    }
+
+    .recipeContent {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-info {
+      flex-direction: column;
+    }
+
+    .profile-container {
+      height: 80vh;
+    }
+
+    .user-info button {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .searchForm {
+      justify-content: center;
+    }
+
+  }

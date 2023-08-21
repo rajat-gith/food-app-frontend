@@ -1,6 +1,6 @@
 import React from "react";
 import { RecipeCard, TaggedContentCard } from "react-ui-cards";
-import { Flex, Box, CircularProgress, Grid, Modal } from "@mui/material";
+import { Flex, Box, CircularProgress, Grid, Modal, Card } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function Receipe({ receipe }) {
@@ -14,11 +14,10 @@ function Receipe({ receipe }) {
           navigate(`/receipes/${receipe._id}`);
         }}
       >
-        <RecipeCard
-          thumbnail={`${BASE_URL}/uploads/${receipe.images[0]}`}
-          title={receipe.name}
-          className="receipe_card"
-        />
+        <Card className="receipe_card">
+          <img src={BASE_URL + "/uploads/" + receipe.images[0]} alt="" />
+          <p>{receipe.name}</p>
+        </Card>
       </Box>
     </Grid>
   );

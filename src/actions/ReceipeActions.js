@@ -9,18 +9,20 @@ import {
 } from "../constants/ReceipeConstants";
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
-export const receipeList = () => async (dispatch) => {
+export const receipeList = (searchQuery) => async (dispatch) => {
   try {
     dispatch({
       type: RECEIPE_LIST_REQUEST,
     });
 
-    const { data } = await axios.get(`${BASE_URL}/api/receipes/`);
-
+    const { data } = await axios.get(
+      `${BASE_URL}/api/receipes/?name=${searchQuery}`
+    );
     dispatch({
       type: RECEIPE_LIST_SUCCESS,
       payload: data,
     });
+    
   } catch (error) {
     dispatch({
       type: RECEIPE_LIST_FAIL,

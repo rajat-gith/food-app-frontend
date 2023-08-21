@@ -7,21 +7,42 @@ import { useDispatch, useSelector } from "react-redux";
 import Receipe from "../components/Receipe";
 import CircularProgress from "@mui/material/CircularProgress";
 import { receipeList } from "../actions/ReceipeActions";
+import { TextField } from "@mui/material";
 
 function ReceipePage() {
   const { error, loading, receipesList } = useSelector(
     (state) => state.receipesList
   );
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearch = (event) => {
+    event.preventDefault();
+    dispatch(receipeList(searchQuery));
+  };
 
   useEffect(() => {
-    dispatch(receipeList());
+    dispatch(receipeList(""));
   }, [dispatch]);
-
-  console.log(receipesList);
-
+  
   return (
     <div className="ReceipePage">
+      <form className="searchForm" onSubmit={handleSearch}>
+        <TextField
+          label="Search"
+          style={{ marginRight: "2px" }}
+          variant="outlined"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <Button
+          variant="contained"
+          style={{ marginRight: "2px" }}
+          color="primary"
+          type="submit"
+        >
+          Search
+        </Button>
+      </form>
       <Grid container spacing={2}>
         {receipesList ? (
           receipesList.receipe && Array.isArray(receipesList.receipe) ? (

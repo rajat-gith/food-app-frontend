@@ -28,6 +28,7 @@ const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
   userReceipe: {},
   receipesList: {},
+  userRegister: { userInfo: userInfoFromStorage },
   receipe: {},
 };
 

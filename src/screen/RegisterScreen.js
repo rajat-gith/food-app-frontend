@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../actions/UserActions";
 
 function RegisterScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error, loading, userInfo } = userRegister;
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -23,27 +28,23 @@ function RegisterScreen() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    try {
-      // Send registration data to backend
-      const response = await axios.post("http://localhost:3000/api/register", {
-        name: name,
-        email: email,
-        password: password,
-      });
-
-      // Handle response from the backend (you can show a success message or redirect to login)
-      console.log(response.data);
-      navigate("/receipes");
-    } catch (error) {
-      // Handle registration error (show error message, etc.)
-      console.error("Registration error:", error);
-    }
+    dispatch(register(name, email, password));
   };
 
+  useEffect(() => {
+    if (userInfo) {
+      console.log(userInfo);
+      if (userInfo.status === "ok") {
+        navigate("/login");
+      } else {
+        alert("Invalid Credentials");
+      }
+    }
+  }, [userInfo]);
+
   return (
-    <div className="LoginScreen">
-      <div className="container">
+    <div className="RegisterScreen">
+      <div className="Registercontainer">
         <h2 className="heading">User Registration</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
