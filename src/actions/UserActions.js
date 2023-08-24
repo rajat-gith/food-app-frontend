@@ -2,6 +2,9 @@ import {
   USER_ADD_RECEIPE_FAIL,
   USER_ADD_RECEIPE_REQUEST,
   USER_ADD_RECEIPE_SUCCESS,
+  USER_EDIT_RECEIPE_FAIL,
+  USER_EDIT_RECEIPE_REQUEST,
+  USER_EDIT_RECEIPE_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -154,6 +157,44 @@ export const userAddReceipe = (post) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_ADD_RECEIPE_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const userEditReceipe = (post, id) => async (dispatch, getState) => {
+  try {
+    const REACT_APP_API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    dispatch({
+      type: USER_EDIT_RECEIPE_REQUEST,
+    });
+    console.log(post);
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios.put(
+      `${REACT_APP_API_BASE_URL}/api/receipes/${id}/update`,
+      post,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.user.token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: USER_EDIT_RECEIPE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_EDIT_RECEIPE_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

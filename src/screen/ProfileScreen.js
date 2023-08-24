@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userAddReceipe, userReceipe } from "../actions/UserActions";
+import {
+  userAddReceipe,
+  userEditReceipe,
+  userReceipe,
+} from "../actions/UserActions";
 import { CircularProgress } from "@mui/material";
 import { Card, Box, Modal } from "@mui/material";
 import { Button, TextField, Typography, Container, Paper } from "@mui/material";
@@ -29,11 +33,18 @@ function ProfileScreen() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
   const [images, setImages] = useState([]);
+  const [updateData, setUpdateData] = useState({});
+  const [currentId, setCurrentId] = useState();
+
+  const [openEditModal, setOpenEditModal] = useState(false);
+
+  const handleCloseEditModal = () => setOpenEditModal(false);
 
   useEffect(() => {
     if (userInfo.user.id) {
@@ -49,13 +60,11 @@ function ProfileScreen() {
 
   const handleImageChange = (event) => {
     const files = event.target.files;
-    // You can store the selected images in 'images' state
     setImages(files);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -69,6 +78,30 @@ function ProfileScreen() {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleEditSubmit = (event) => {
+    event.preventDefault();
+    const updateData = {
+      name: name,
+      ingredients: ingredients,
+      description: description,
+      steps: steps,
+    };
+    
+    try {
+      dispatch(userEditReceipe(updateData, currentId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -96,6 +129,15 @@ function ProfileScreen() {
                   <div className="recipeContent">
                     <li>Name : {recipe.name}</li>
                     <p> {recipe.description}</p>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        setOpenEditModal(true);
+                        setCurrentId(recipe._id);
+                      }}
+                    >
+                      Edit
+                    </Button>
                   </div>
                 </div>
               ))
@@ -117,7 +159,6 @@ function ProfileScreen() {
                     className="textfield"
                     label="Name"
                     fullWidth
-                    required
                     value={name}
                     style={{ marginBottom: "15px" }}
                     onChange={(e) => setName(e.target.value)}
@@ -169,6 +210,73 @@ function ProfileScreen() {
                     type="submit"
                   >
                     Create Recipe
+                  </Button>
+                </form>
+              </Paper>
+            </Container>
+          </Box>
+        </Modal>
+
+        <Modal open={openEditModal} onClose={handleCloseEditModal}>
+          <Box sx={style}>
+            <Container maxWidth="sm">
+              <Paper className="container">
+                <Typography variant="h5" gutterBottom>
+                  Create Recipe
+                </Typography>
+                <form onSubmit={handleEditSubmit}>
+                  <TextField
+                    className="textfield"
+                    label="Name"
+                    fullWidth
+                    value={name}
+                    style={{ marginBottom: "15px" }}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <TextField
+                    className="textfield"
+                    label="Description"
+                    fullWidth
+                    multiline
+                    rows={4}
+                    value={description}
+                    style={{ marginBottom: "15px" }}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                  <TextField
+                    className="textfield"
+                    label="Ingredients"
+                    fullWidth
+                    multiline
+                    rows={4}
+                    value={ingredients}
+                    style={{ marginBottom: "15px" }}
+                    onChange={(e) => setIngredients(e.target.value)}
+                  />
+                  <TextField
+                    className="textfield"
+                    style={{ marginBottom: "15px" }}
+                    label="Steps"
+                    fullWidth
+                    multiline
+                    rows={4}
+                    value={steps}
+                    onChange={(e) => setSteps(e.target.value)}
+                  />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleImageChange}
+                    style={{ marginBottom: "15px" }}
+                  />
+                  <Button
+                    className="button"
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                  >
+                    Edit Recipe
                   </Button>
                 </form>
               </Paper>

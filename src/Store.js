@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   loginUserReducer,
   registerUserReducer,
+  userEditReceipeReducers,
   userReceipeReducers,
 } from "./reducers/UserReducers";
 import {
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   userReceipe: userReceipeReducers,
   receipesList: receipeListReducer,
   receipe: receipeListByIdReducer,
+  receipeEdit: userEditReceipeReducers,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -30,6 +32,7 @@ const initialState = {
   receipesList: {},
   userRegister: { userInfo: userInfoFromStorage },
   receipe: {},
+  receipeEdit: {},
 };
 
 const middleware = [thunk];
