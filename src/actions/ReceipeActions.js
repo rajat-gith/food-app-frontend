@@ -22,7 +22,6 @@ export const receipeList = (searchQuery) => async (dispatch) => {
       type: RECEIPE_LIST_SUCCESS,
       payload: data,
     });
-    
   } catch (error) {
     dispatch({
       type: RECEIPE_LIST_FAIL,
