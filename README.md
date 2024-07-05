@@ -9,8 +9,6 @@ Welcome to the frontend repository for the Food Recipe App. This repository cont
 - [Screens](#screens)
 - [Dependencies](#dependencies)
 - [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
